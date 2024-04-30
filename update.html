@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Employee Information</title>
+</head>
+
+<style>
+  body, form {
+    background-color: #f1fced;
+    font-family: Verdana;
+  }
+
+  h1, h2, label {
+    color: #5c7a52;
+  }
+</style>
+
+<body>
+
+<h2>Update Employee Information</h2>
+
+
+<form action="update.php" method="post">
+    <label for="empID">Employee ID:</label><br>
+    <input type="text" id="empID" name="empID" placeholder="#########"><br>
+    
+    <label for="fname">First Name:</label><br>
+    <input type="text" id="fname" name="fname" placeholder="John"><br>
+    
+    <label for="lname">Last Name:</label><br>
+    <input type="text" id="lname" name="lname" placeholder="Smith"><br>
+    
+    <label for="position">Position:</label><br>
+    <input type="text" id="position" name="position" placeholder="Assistant, Manager, etc."><br>
+    
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" placeholder="username@company.com"><br>
+    
+    <label for="depID">Department ID:</label><br>
+    <input type="text" id="depID" name="depID" placeholder="####"><br>
+    
+    <label for="hiredate">Hire Date (YYYY-MM-DD):</label><br>
+    <input type="text" id="hiredate" name="hiredate" placeholder="YYYY-MM-DD"><br><br>
+    
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
