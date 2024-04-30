@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>Add Employees</title>
+</head>
+
+<style>
+  body {
+    background-color: #f1fced;
+    font-family: Verdana;
+  }
+  
+  h1, h2, td, p, ::placeholder {
+    color: #5c7a52;
+  }
+  
+  </style>
+
+<BODY>
+<SCRIPT language=JavaScript type=text/javascript>
+	
+	function validate_form(){
+    	var message ="";
+      message += checkNumber("Employee ID", document.addform.empID.value);
+      message += checkNumber("Department ID", document.addform.depID.value);
+    	message += checkAlphabet("First name", document.addform.fname.value);
+    	message += checkAlphabet("Last name", document.addform.lname.value);
+		  message += checkEmail(document.addform.email.value);
+    
+    	if (message == ""){
+      		return true;
+    	} else {
+      		alert(message);
+      	return false;
+    	}    
+  	}
+	function checkEmail(itemcontent){
+    	var emailregexp = /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/;
+    
+    	if (!itemcontent.match(/[a-zA-Z]+/)){
+      		return "E-mail address is required!\n";
+    	} else if (itemcontent.match(emailregexp)){
+      		return "";
+    	} else {
+      		return "Invalid E-mail Address!\n";
+    	}
+  	}
+  
+  	function checkAlphabet(field, itemcontent){
+    	var nameregexp = /[a-zA-Z]+/;
+    	if (!itemcontent.match(nameregexp)){
+      		return field+" is required!\n";
+    	}
+    	return "";
+  	}
+
+    function checkNumber(field, itemcontent){
+      var numregexp = /[0-9]+/;
+      if (!itemcontent.match(numregexp)){
+      		return field+" is required!\n";
+    	}
+    	return "";
+    }
+
+    function checkDate(field, itemcontent){
+    	var dateregexp = /^[0-9]{2}-[0-9]{2}-[0-9]{4}$/;
+		
+    	if ((field =="Hire Date") && (itemcontent=="")){
+      		return field+" is required!\n";
+		} else if ((itemcontent!="") && !itemcontent.match(dateregexp)){
+      		return field+" is in incorrect format!\n";
+    	} else{
+    		return "";
+  		}
+	}
+	
+</SCRIPT>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<blockquote>
+  <p><h2>Add Employee Information</h2>
+  <form name="addform" action="add.php" method=post onSubmit="return validate_form()" >
+    <table width="60%" border="0" cellpadding="3" cellspacing="12">
+    <tr>
+      <td width="130"><p><strong>Employee ID :</strong> &nbsp;<span class="style1">*</span><br /></p>
+        </td>
+      <td><input name="empID" type="text" size="30" maxlength="9" placeholder="#########"/></td>
+    </tr>
+    <tr>
+      <td width="130"><p><strong>Department ID :</strong> &nbsp;<span class="style1">*</span><br /></p>
+        </td>
+      <td><input name="depID" type="text" size="30" maxlength="4" placeholder="####"/></td>
+    </tr>
+    <tr>
+      <td width="130"><strong>First Name : &nbsp;<span class="style1">*</span></strong></td>
+      <td><input name="fname" type="text" size="30" maxlength="30" placeholder="John"/>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td width="130"><strong>Last Name :</strong> &nbsp;<span class="style1">*</span></td>
+      <td><input name="lname" type="text" size="30" maxlength="30" placeholder="Smith"/></td>
+    </tr>
+    <tr>
+      <td width="130"><strong>E-mail Address :</strong>  &nbsp;<span class="style1">*</span></td>
+      <td><input name="email" type="text" size="30" maxlength="30" placeholder="username@company.com"/></td>
+    </tr>
+    <tr>
+    <tr valign="top">
+      <td width="130"><strong>Position :</strong> </td>
+      <td><input name="position" type="text" size="30" maxlength="30" placeholder="Assistant, Manager, etc."/></td>
+    </tr>
+    <tr>
+      <td width="130"><strong>Hire Date :</strong> &nbsp;<span class="style1"></span></td>
+      <td><input name="hireDate" type="text" size="30" maxlength="20" placeholder="YYYY-MM-DD" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"/></td>
+    </tr>
+    <tr valign="top">
+      <td width="130"><strong>Status :</strong> </td>
+      <td><input type="checkbox" id="option1" name="option1" value="employed">
+        <label for="option1"> Employed</label><br>
+        <input type="checkbox" id="option2" name="option2" value="retired">
+        <label for="option2"> Retired</label><br>
+        <input type="checkbox" id="option3" name="option3" value="other">
+        <label for="option3"> Other</label><br><br></textarea></td>
+    </tr>
+    <tr>
+      <td width="130">&nbsp;</td>
+      <td><input type="reset" name="Reset" value="Reset" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="Submit" value="Submit" /></td>
+    </tr>
+  </table>
+  </form>
+   </p>
+</blockquote>
+</body>
+</html>
